@@ -1,14 +1,14 @@
 version: '2'
 services:
   api:
-    build: ./server
+    build: ./backend
     ports:
      - "5001:5000"
     volumes:
      - ./server:/code:Z
 #    restart: always
   web:
-    build: ./web
+    build: ./frontend
     ports:
      - "3000:3000"
     volumes:

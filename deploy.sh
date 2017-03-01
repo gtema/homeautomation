@@ -1,18 +1,22 @@
 #!/bin/bash
 
+# TODO: replace it with ansible playbook
+echo -e "script is obsoleted"
+exit 1
+
 ENV_FILE=".env" && test -f $ENV_FILE && source $ENV_FILE
 
 function heroku_web()
 {
   echo -e "Deploy Frontend to Heroku"
-  git subtree push --prefix web heroku_web master
+  (cd frontend ; git push heroku master)
   return 0
 }
 
 function heroku_api()
 {
   echo -e "Deploy Backend to Heroku"
-  git subtree push --prefix server heroku_api master
+  (cd backend ; git push heroku master)
   return 0
 }
 
@@ -34,6 +38,7 @@ function heroku ()
 
 function pi ()
 {
+  # TODO: replace it with ansible playbook
   echo -e "Deploying to pi"
   (cd web ; npm run build)
   rsync -av --del web/build/* pi:/var/www/html

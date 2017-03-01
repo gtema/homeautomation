@@ -1,0 +1,20 @@
+version: '2'
+services:
+  api:
+    build: ./server
+    ports:
+     - "5001:5000"
+    volumes:
+     - ./server:/code:Z
+#    restart: always
+  web:
+    build: ./web
+    ports:
+     - "3000:3000"
+    volumes:
+     - ./web:/usr/src/app:Z
+#    restart: always
+    environment:
+      - REACT_APP_API_HOST=localhost:5001
+      - REACT_APP_API_PATH=/api/v0/stock/
+      - REACT_APP_API_AUTH=/auth

@@ -4,15 +4,15 @@
 
 My HomeAutomation project [HomeAutomation project](https://github.com/gtema/homeautomation) is an attempt to optimize some of the household activities and their efficiency. One of the most noticable examples for that is to keep track of groceries and household products to avoid their disposal or sudden lack. Sometimes you come from the shop and figure out that you have already few packages of flour. On the other hand you start coocking and figure out, that you have no milk. In order to solve this problem and potentially some others this project was created.
 
-There is no idea to make this project public or to provide/guarantee any support to anybody, who would like to use it. However it is not in any way prohibited for anyone to use it.
+As of now there is no idea to make this project public or to provide/guarantee any support to anybody who would like to use it. However it is not in any way prohibited for anyone to use it. For example it can be used as a reference for own study.
 
 # Quick summary #
 
 The project consists currently from two independend modules: API (the backend) and the web UI (the frontend).
 
 * [API](https://github.com/gtema/homeautomation-backend) is a simple set of REST CRUD services to provide access to the database. It is based on the python Flask framework.
-* [Web UI](https://github.com/gtema/homeautomation-backend) is based on the Redux + React combination. Development is based on the Node.JS, which is, however, unlikely to be used in "production".
-* DB is not considered as a module. Feel free to use any database of your choise with access from Python. Do not forget to update requirements.txt with the DB libs
+* [Web UI](https://github.com/gtema/homeautomation-frontend) is based on the Redux + React combination. Development is based on the Node.JS, which is, however, unlikely to be used in "production".
+* Feel free to use any database of your choise with access from Python. Do not forget to update requirements.txt with the DB libs
 
 The basic UML diagrams for the project can be viewed from Model.xmi file (created using Umbrello). They are not 100% identical with the state of the project due to the early development phase.
 
@@ -28,17 +28,26 @@ Usually I do commits while switching between dev stations, so not every commit i
 
 ### How do I get set up? ###
 
-* Use of docker-compose (preferred)
+#### Use of docker-compose
 
 Issue docker-compose up and you are set to go. Local directories are mounted into the images,
 so that local changes affect containers immediately without redeployment.
 
-* Use of local python and npm
+#### Use of local python and npm
 
-Use script setup.sh in order to setup python virtual environment and npm modules.
-After that use backend/start_server.sh script to start api and web/npm start to start node.js
+In the backend:
+  - create a virtual environment `virtualenv venv`
+  - source to the vent `source venb/bin/activate`
+  - install dependencies `pip install -r requirements.txt`
+  - start the server `python run.py`
 
-* Use Heroku PaaS
+Having the virtual environment installed you can use start_server.sh script to start the API
+
+In the fronend:
+ - install dependencies `npm install`
+ - start the development version `npm run`
+
+#### Use of Heroku PaaS
 
 Create account on Heroku, create python application for the server, add database. Also create node app with [Buildpack](https://github.com/mars/create-react-app-buildpack.git)
 Use git push heroku master to push only server content as your app.
@@ -75,6 +84,7 @@ I'm planning to run the project on the RaspberryPi V1. So most likely it would b
 - PaaS:
   - Heroku: API is deployable to the Heroku with no changes now. Just set the config variable APP_SETTINGS=config.HerokuConfig and configure a PG addon
 - [AtomicApp](github.com/projectatomic/atomicapp) is in a concept stage and will be prepared as a separate repo
+- Kubernetes setup is in a concept stage and will be prepared soon
 
 There is small helper script for deployment in the repo root. It currently supports deployment to my home RaspberryPi and Heroku.
 

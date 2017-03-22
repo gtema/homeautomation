@@ -83,10 +83,8 @@ I'm planning to run the project on the RaspberryPi V1. So most likely it would b
 - Standalone apps: API (Flask server, any other Python web server, mod_fsgi) and Web (node.js, minimized JS on a static web werver)
 - PaaS:
   - Heroku: API is deployable to the Heroku with no changes now. Just set the config variable APP_SETTINGS=config.HerokuConfig and configure a PG addon
-- [AtomicApp](github.com/projectatomic/atomicapp) is in a concept stage and will be prepared as a separate repo
-- Kubernetes setup is in a concept stage and will be prepared soon
-
-There is small helper script for deployment in the repo root. It currently supports deployment to my home RaspberryPi and Heroku.
+- [AtomicApp](github.com/projectatomic/atomicapp) is in a concept stage and will be prepared as a separate repo. **obsolete due to the project halt**
+- Kubernetes setup is a WIP. It is not stable yet, DB is not prepared, routing is not ready yet either. Backend setup is being reworked for the better k8 configuration possibility
 
 The only rule for deployment: connect API with DB of your choice, configure Frontend to provide correct link to API from browsers.
 

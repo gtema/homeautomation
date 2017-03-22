@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: homeautomation-backend-deployment
+spec:
+  replicas: 1
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: homeautomation
+        tier: backend
+    spec:
+      containers:
+      - name: homeautomation-backend
+        image: gtema/homeautomation-backend:v5
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        env:
+        - name: APP_SETTINGS
+          value: "config.Kubernetes"
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: backend-config
+              key: db_url

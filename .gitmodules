@@ -1,6 +1,6 @@
 [submodule "backend"]
 	path = backend
-	url = https://github.com/gtema/homeautomation-backend.git
+	url = git@github.com:gtema/homeautomation-backend.git
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/gtema/homeautomation-frontend.git
+	url = git@github.com:gtema/homeautomation-frontend.git

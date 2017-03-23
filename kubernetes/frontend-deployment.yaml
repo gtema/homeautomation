@@ -15,5 +15,17 @@ spec:
       containers:
       - name: homeautomation-frontend
         image: gtema/homeautomation-frontend:v1
+        # imagePullPolicy: "Always"
         ports:
         - containerPort: 3000
+        env:
+        - name: REACT_APP_API_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: api_host
+        - name: REACT_APP_API_HTTPS
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: use_https

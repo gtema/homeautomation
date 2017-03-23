@@ -12,10 +12,13 @@ spec:
     spec:
       containers:
       - name: homeautomation-backend
-        image: gtema/homeautomation-backend:v5
+        image: gtema/homeautomation-backend:v1
+        # imagePullPolicy: Always
         ports:
-        - containerPort: 80
-        - containerPort: 443
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
         env:
         - name: APP_SETTINGS
           value: "config.Kubernetes"

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  db_url: 'postgres://postgres@localhost/travis_ci_test'
+  db_url: 'sqlite:///../app.sqlite'
 
 metadata:
   name: backend-config

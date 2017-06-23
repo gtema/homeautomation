@@ -1,0 +1,7 @@
+web_server: httpd
+web_modpython: python3-mod_wsgi
+
+web_vhost_conf: /etc/httpd/conf.d
+web_front_dir: /var/www/homeautomation_frontend
+
+web_front_servername: front.gth

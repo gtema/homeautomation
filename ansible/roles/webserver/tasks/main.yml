@@ -1,0 +1,57 @@
+---
+
+# - name: install webserver
+#   become: yes
+#   package: name={{ item }} state=installed
+#   with_items:
+#     - '{{ web_server }}'
+#     - '{{ web_modpython }}'
+#
+# - name: enable debian apache modules
+#   become: yes
+#   when: ansible_distribution == 'Debian'
+#   file:
+#       src: '{{ web_mods_available }}/{{ item.src }}'
+#       dest: '{{ web_mods_enabled }}/{{ item.dest }}'
+#       state: 'link'
+#   with_items:
+#     - { src: 'ssl.conf', dest: 'ssl.conf' }
+#     - { src: 'ssl.load', dest: 'ssl.load' }
+#     - { src: 'rewrite.load', dest: 'rewrite.load' }
+#     - { src: 'wsgi.conf', dest: 'wsgi.conf' }
+#     - { src: 'wsgi.load', dest: 'wsgi.load' }
+#
+# - name: prepare frontend dir
+#   become: yes
+#   file:
+#     path: '{{ web_front_dir }}'
+#     state: directory
+#     mode: 0755
+#     owner: '{{ web_user }}'
+#     group: '{{ web_group }}'
+#
+# - name: configure htaccess
+#   become: yes
+#   copy:
+#     src: htaccess.static
+#     dest: '{{ web_front_dir }}/.htaccess'
+#     mode: 0644
+#     owner: '{{ web_user }}'
+#     group: '{{ web_group }}'
+#
+# - name: prepare vhost
+#   become: yes
+#   template:
+#     src: homeautomation_front.conf
+#     dest: '{{ web_vhost_conf }}/homeautomation_front_xx.conf'
+#     owner: '{{ web_user }}'
+#     group: '{{ web_group }}'
+  
+- name: distr
+  become: yes
+  copy:
+    src: ../frontend/build/
+    dest: '{{ web_front_dir }}'
+    mode: 0644
+    owner: '{{ web_user }}'
+    group: '{{ web_group }}'

@@ -1,0 +1,6 @@
+web_server: apache2-bin
+web_modpython: libapache2-mod-wsgi-py3
+web_vhost_conf: /etc/apache2/sites-enabled/
+web_front_dir: /var/www/homeautomation_frontend
+web_mods_available: /etc/apache2/mods-available
+web_mods_enabled: /etc/apache2/mods-enabled
